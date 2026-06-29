@@ -1,9 +1,11 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowRight, ChevronRight } from "lucide-react";
 import HeroFeatureBadges from "./HeroFeatureBadges";
 import { useLoading } from "./LoadingProvider";
+import { ASSETS } from "@/lib/assets";
 
 const WHATSAPP_URL = "https://wa.me/1234567890";
 
@@ -13,23 +15,56 @@ const Hero = () => {
   return (
     <section
       id="inicio"
-      className="relative min-h-[85svh] md:min-h-[921px] flex items-center pt-28 pb-16 md:pt-margin-desktop md:pb-margin-desktop px-gutter md:px-margin-desktop overflow-hidden -mt-20"
+      className="relative min-h-[76.5svh] md:min-h-[829px] flex items-center pt-28 pb-16 md:pt-margin-desktop md:pb-margin-desktop px-gutter md:px-margin-desktop overflow-hidden -mt-20"
     >
       <div className="absolute inset-0 z-0 bg-surface-container-lowest">
-        <motion.video
-          initial={{ opacity: 0 }}
-          animate={heroReady ? { opacity: 1 } : { opacity: 0 }}
-          transition={{ duration: 1.2, ease: "easeOut" }}
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="auto"
-          className="absolute inset-0 w-full h-full object-cover object-center"
-          aria-hidden="true"
+        <motion.div
+          className="absolute inset-0 will-change-transform"
+          initial={{ scale: 1.1, opacity: 0 }}
+          animate={
+            heroReady
+              ? {
+                  scale: [1.0, 1.05, 1.0],
+                  x: [0, -8, 0],
+                  y: [0, -4, 0],
+                  opacity: 1,
+                }
+              : { scale: 1.1, opacity: 0 }
+          }
+          transition={{
+            opacity: { duration: 1.2, ease: "easeOut" },
+            scale: {
+              duration: 10,
+              ease: "easeInOut",
+              repeat: Infinity,
+              repeatType: "loop",
+            },
+            x: {
+              duration: 12,
+              ease: "easeInOut",
+              repeat: Infinity,
+              repeatType: "loop",
+            },
+            y: {
+              duration: 15,
+              ease: "easeInOut",
+              repeat: Infinity,
+              repeatType: "loop",
+            },
+          }}
         >
-          <source src="/herovid.mp4" type="video/mp4" />
-        </motion.video>
+          <Image
+            src={ASSETS.heroBg}
+            alt=""
+            fill
+            priority
+            quality={100}
+            sizes="100vw"
+            unoptimized
+            className="object-cover object-[center_64%]"
+            aria-hidden
+          />
+        </motion.div>
         <div className="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-transparent"></div>
       </div>
 
@@ -63,7 +98,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 24 }}
             animate={heroReady ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
             transition={{ duration: 0.6, delay: 0.35 }}
-            className="mt-12 md:mt-16 font-body-lg text-body-lg text-on-surface-variant max-w-xl leading-relaxed"
+            className="mt-8 md:mt-10 font-body-lg text-body-lg text-on-surface-variant max-w-xl leading-relaxed"
           >
             O Futuro da Mobilidade Elétrica começa hoje em Piraju
           </motion.p>

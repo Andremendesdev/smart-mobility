@@ -14,7 +14,7 @@ const stats = [
 
 const StatsSection = () => {
   return (
-    <section id="stats" className="relative py-14 sm:py-20 md:py-28 overflow-hidden">
+    <section id="stats" className="relative py-10 sm:py-14 md:py-20 overflow-hidden">
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         <NeonLights />
         <FloatingParticles />
@@ -22,7 +22,7 @@ const StatsSection = () => {
       </div>
 
       <div className="relative z-10 max-w-container-max mx-auto px-4 sm:px-gutter md:px-margin-desktop">
-        <ScrollReveal className="text-center mb-8 sm:mb-12 md:mb-14">
+        <ScrollReveal className="text-center mb-6 sm:mb-8 md:mb-10">
           <p className="text-[9px] sm:text-[10px] font-medium tracking-[0.2em] uppercase text-amber-400 mb-2 sm:mb-3">
             Performance em números
           </p>
@@ -34,7 +34,7 @@ const StatsSection = () => {
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6 lg:gap-8">
           {stats.map((stat, i) => (
             <ScrollReveal key={stat.label} delay={i * 0.08}>
-              <div className="glass-panel rounded-lg sm:rounded-xl p-3.5 sm:p-5 md:p-7 lg:p-8 text-center group hover:border-amber-400/20 transition-colors duration-500 h-full flex flex-col justify-center min-w-0">
+              <div className="glass-panel rounded-lg sm:rounded-xl p-3 sm:p-4 md:p-5 lg:p-6 text-center group hover:border-amber-400/20 transition-colors duration-500 h-full flex flex-col justify-center min-w-0">
                 <p className="font-headline-md text-lg sm:text-xl md:text-2xl lg:text-3xl font-black text-neon-sky-soft leading-none break-words">
                   <AnimatedCounter value={stat.value} suffix={stat.suffix} />
                 </p>

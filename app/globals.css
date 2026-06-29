@@ -161,38 +161,6 @@
     box-shadow: 0 0 6px rgba(251, 191, 36, 0.6);
   }
 
-  .loading-cinematic-sweep {
-    background: linear-gradient(
-      105deg,
-      transparent 0%,
-      transparent 42%,
-      rgba(251, 191, 36, 0.04) 48%,
-      rgba(255, 255, 255, 0.07) 50%,
-      rgba(251, 191, 36, 0.04) 52%,
-      transparent 58%,
-      transparent 100%
-    );
-    background-size: 250% 100%;
-    animation: loading-cinematic-sweep 4.5s ease-in-out infinite;
-  }
-
-  .logo-light-sweep {
-    background: linear-gradient(
-      105deg,
-      transparent 0%,
-      transparent 35%,
-      rgba(255, 255, 255, 0.15) 48%,
-      rgba(251, 191, 36, 0.35) 50%,
-      rgba(255, 255, 255, 0.15) 52%,
-      transparent 65%,
-      transparent 100%
-    );
-    background-size: 220% 100%;
-    animation: logo-light-sweep 2.8s ease-in-out infinite;
-    mix-blend-mode: screen;
-    pointer-events: none;
-  }
-
   .card-3d {
     transform-style: preserve-3d;
     perspective: 1000px;
@@ -299,36 +267,6 @@
   }
 }
 
-@keyframes loading-cinematic-sweep {
-  0%,
-  100% {
-    background-position: 200% 0;
-    opacity: 0.4;
-  }
-  50% {
-    background-position: -100% 0;
-    opacity: 1;
-  }
-}
-
-@keyframes logo-light-sweep {
-  0%,
-  100% {
-    background-position: 180% 0;
-    opacity: 0;
-  }
-  20% {
-    opacity: 0;
-  }
-  50% {
-    background-position: -80% 0;
-    opacity: 1;
-  }
-  80% {
-    opacity: 0;
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   .btn-border-trail::before {
     animation: none;
@@ -342,9 +280,7 @@
 
   .neon-orb,
   .neon-sweep,
-  .floating-particle,
-  .loading-cinematic-sweep,
-  .logo-light-sweep {
+  .floating-particle {
     animation: none !important;
   }
 

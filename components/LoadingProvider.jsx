@@ -1,8 +1,8 @@
 "use client";
 
 import { createContext, useContext, useState, useEffect } from "react";
-import { AnimatePresence, motion } from "framer-motion";
-import SplashScreen from "./SplashScreen";
+import { motion, AnimatePresence } from "framer-motion";
+import Logo from "./Logo";
 
 const LoadingContext = createContext({
   heroReady: false,
@@ -22,9 +22,21 @@ const SplashOverlay = ({ visible, fading }) => {
           animate={{ opacity: fading ? 0 : 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: FADE_MS / 1000, ease: [0.22, 1, 0.36, 1] }}
-          className="fixed inset-0 z-[100]"
+          className={`fixed inset-0 z-[100] flex flex-col items-center justify-center ${
+            fading
+              ? "bg-background/40 backdrop-blur-[1px] pointer-events-none"
+              : "bg-background"
+          }`}
+          aria-live="polite"
+          aria-busy={!fading}
+          aria-label="Carregando"
         >
-          <SplashScreen fading={fading} />
+          <motion.div
+            animate={{ opacity: fading ? 0 : 1, y: fading ? -8 : 0 }}
+            transition={{ duration: 0.4 }}
+          >
+            <Logo className="h-11 md:h-12 w-auto shrink-0" />
+          </motion.div>
         </motion.div>
       )}
     </AnimatePresence>
